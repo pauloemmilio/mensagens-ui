@@ -7,19 +7,12 @@ import api from '../../services/api';
 
 export default function Listagem (props) {
     const [mensagens, setMensagens] = useState([]);
-    const history = useHistory();
 
     useEffect(() => {
         api.get('mensagens').then(response => {
             setMensagens(response.data);
         })
     }, []);
-
-    const editarMensagem = (id) => {
-        props.history.push({
-            pathname: '/mensagem/' + id
-        });
-    };
 
     async function excluirMensagem (id) {
         try {
